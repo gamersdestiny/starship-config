@@ -14,8 +14,9 @@ $docker_context\
 $nodejs\
 $cmd_duration \
 $jobs \
-$time
-[──❯](bold green) 
+$time \
+$status 
+$character
 """
 
 [fill]
@@ -36,8 +37,17 @@ disabled = false
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]                            # The name of the module we are configuring is "character"
-success_symbol = "[﬌](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+success_symbol = "[─❯](bold green)"   # The "success_symbol" segment is being set to "➜" with the color "bold green"
 error_symbol = "[✗](bold red)"
+
+[status]
+symbol = "[✗](bold red)"
+style = "bold red"
+success_symbol = "[_](bold green)"
+format = '[$symbol$status$common_meaning$signal_name$maybe_int]($style) '
+map_symbol = true
+disabled = false
+
 #  
 # configure directory
 [directory]
@@ -52,6 +62,7 @@ min_time = 4
 show_milliseconds = false
 disabled = false
 style = "bold italic red"
+format = 'took [$duration]($style)'
 
 [aws]
 symbol = "  "
